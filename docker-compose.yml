@@ -1,0 +1,34 @@
+version: '3'
+services:
+  redis:
+    restart: always
+    image: "redis:alpine"
+    networks:
+      - web_network
+  web:
+    restart: always
+    env_file: .env
+    build: .
+    ports:
+      - "80:80"
+    networks:
+      - web_network
+    depends_on:
+      - redis
+    volumes:
+      - ./:/src
+#      - .db_data/db.sqlite3:/db.sqlite3
+  nginx:
+    restart: always
+    image: nginx:latest
+    ports:
+      - "86:86"
+    volumes:
+      - ./docker/nginx:/etc/nginx/conf.d
+    networks:
+      - web_network
+    depends_on:
+      - web
+networks:
+  web_network:
+    driver: bridge
