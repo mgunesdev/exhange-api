@@ -40,7 +40,7 @@
 
 See [Swagger](http://localhost/) documented endpoints.
 
-Download [Postman Collection](docs/Exchange API.postman_collection.json).
+Download [Postman Collection](docs/Exchange_API.postman_collection.json).
 and [Postman Environment](docs/LOCAL.postman_environment.json).
 
 
